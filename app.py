@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 dic = {0 : 'Covid Pneumonia', 1 : 'Regular Pneumonia', 2 : 'Healthy'}
 
-model = load_model('clssyfyCT.h5')
+model = load_model('classyfyCT.h5')
 
 model.make_predict_function()
 
