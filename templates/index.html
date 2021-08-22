@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Image Classification</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <style>
+body{
+  background-image: url("static/covphoto2.jpeg");
+  height: 100%;
+  width: 100%;
+}
+#heading{
+  text-align: center;
+  color: aliceblue;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;  
+}
+#imagediv{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size:x-large;
+  color: rgb(255, 255, 255);
+}
+#imagediv2{
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size:large;
+  color: rgb(255, 255, 255);
+}
+.buttn{
+  color: rgb(232, 232, 233);
+  background-color: rgb(93, 143, 236);
+  width: 80px;
+  height: 40px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size:large;
+}
+#pred{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: aliceblue;
+}
+#predimg{
+  margin-left: 100px;
+}
+
+  </style>
+</head>
+
+<body>
+
+<div class="container-fluid" >
+   <h1 id=heading >COVID-19 Pneumonia Classfication</h1>
+  <br><br>
+  <form class="form-horizontal" action="/submit" method="post" enctype="multipart/form-data">
+    <div id=imagediv >
+      <label >Upload Your CT Scan Image :</label>           
+    </div>
+    <br><br>
+    <div id=imagediv2><input type="file" name="my_image"></div>
+    <br>
+    <div class="form-group">        
+      <div id=buttondiv class="col-sm-offset-2 col-sm-10">
+        <button  type="submit" class="buttn">Submit</button>
+      </div>
+    </div>
+  </form>
+
+	{% if prediction %}
+  <img id=predimg src="{{img_path}}" height="275px" width="300px">
+	<h2 id=pred> Your Prediction   : <i> {{prediction}} </i></h2>
+
+	{% endif %}
+
+</div>
+
+</body>
+</html>
